@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Catalog — MarginHaul</title>
+<meta name="description" content="Browse and filter the full catalog of high-margin dropshipping products by category, price, and profit margin.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💰</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">💰</span> MarginHaul</a>
+    <div class="nav-links">
+      <a href="index.html#trending">Trending</a>
+      <a href="index.html#why">Why These Win</a>
+      <a href="index.html#calculator">Profit Calculator</a>
+      <a href="shop.html">Full Catalog</a>
+    </div>
+    <a class="nav-cta" href="index.html">Back Home</a>
+  </div>
+</nav>
+
+<header class="hero" style="padding:64px 0 40px;">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">📦 Full catalog</span>
+    <h1 style="font-size:clamp(1.9rem,4vw,2.8rem)">Every high-margin product in one place</h1>
+    <p>Filter by category, search by name, and sort by margin, profit, price, or rating.</p>
+  </div>
+</header>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="filters" id="categoryFilters"></div>
+
+    <div class="sort-row">
+      <span class="result-count" id="resultCount"></span>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <input class="search-box" id="searchBox" type="text" placeholder="Search products…">
+        <select id="sortSelect">
+          <option value="margin-desc">Sort: Margin (high → low)</option>
+          <option value="profit-desc">Sort: Profit / unit (high → low)</option>
+          <option value="price-asc">Sort: Price (low → high)</option>
+          <option value="price-desc">Sort: Price (high → low)</option>
+          <option value="rating-desc">Sort: Rating (high → low)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid" id="catalogGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <a class="brand" href="index.html"><span class="brand-mark">💰</span> MarginHaul</a>
+      <div class="footer-links">
+        <a href="shop.html">Catalog</a>
+        <a href="index.html#calculator">Calculator</a>
+        <a href="index.html#why">Why These Win</a>
+      </div>
+    </div>
+    <div class="disclosure">
+      MarginHaul is a demo storefront for showcasing product margins and is not a live store — no checkout or payment processing is included.
+      Supplier costs and sell prices are illustrative examples for planning purposes, not live quotes; confirm actual costs, shipping times, and
+      supplier reliability before listing any product for sale. Product images are placeholders. Margins shown are gross margin
+      (before ads, platform fees, and transaction fees) and are not a guarantee of profitability.
+    </div>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+<script>
+  setupCatalog({
+    gridId: "catalogGrid",
+    filterId: "categoryFilters",
+    sortId: "sortSelect",
+    searchId: "searchBox",
+    countId: "resultCount"
+  });
+</script>
+</body>
+</html>

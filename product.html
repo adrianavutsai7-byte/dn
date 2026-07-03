@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — MarginHaul</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💰</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .pd-wrap { display:grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 56px 0 40px; }
+  .pd-media { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); aspect-ratio: 1/1; background: var(--surface-2); position: relative; }
+  .pd-media img { width:100%; height:100%; object-fit:cover; }
+  .pd-back { color: var(--text-faint); font-size: 0.85rem; display:inline-block; margin-bottom: 20px; }
+  .pd-cat { color: var(--text-faint); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight:700; }
+  .pd-title { font-size: clamp(1.6rem, 3vw, 2.2rem); margin: 8px 0 14px; letter-spacing: -0.02em; }
+  .pd-blurb { color: var(--text-dim); font-size: 1rem; margin-bottom: 24px; }
+  .pd-price-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; margin-bottom: 24px; }
+  .pd-price-main { display:flex; align-items: baseline; gap: 14px; margin-bottom: 16px; }
+  .pd-price-main .sell { font-size: 2rem; font-weight: 800; }
+  .pd-price-main .cost { color: var(--text-faint); font-size: 0.95rem; }
+  .pd-metrics { display:grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+  .pd-metrics .m { background: var(--surface-2); border-radius: 10px; padding: 14px; text-align:center; }
+  .pd-metrics .m .v { font-weight: 800; font-size: 1.1rem; color: var(--money); }
+  .pd-metrics .m .l { font-size: 0.7rem; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 2px; }
+  .pd-rating { color: var(--warn); font-weight: 600; margin-bottom: 20px; }
+  .pd-rating span { color: var(--text-faint); font-weight: 400; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">💰</span> MarginHaul</a>
+    <div class="nav-links">
+      <a href="index.html#trending">Trending</a>
+      <a href="index.html#why">Why These Win</a>
+      <a href="index.html#calculator">Profit Calculator</a>
+      <a href="shop.html">Full Catalog</a>
+    </div>
+    <a class="nav-cta" href="shop.html">Full Catalog</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div id="pdRoot"></div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="disclosure">
+      MarginHaul is a demo storefront for showcasing product margins and is not a live store — no checkout or payment processing is included.
+      Supplier costs and sell prices are illustrative examples for planning purposes. Product images are placeholders.
+    </div>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+<script>
+  const params = new URLSearchParams(location.search);
+  const id = params.get("id");
+  const product = PRODUCTS.find(p => p.id === id) || PRODUCTS[0];
+  const root = document.getElementById("pdRoot");
+  const m = margin(product).toFixed(0);
+  const pr = profit(product);
+
+  root.innerHTML = `
+    <a class="pd-back" href="shop.html">← Back to catalog</a>
+    <div class="pd-wrap">
+      <div class="pd-media">
+        <img src="${imgUrl(product.seed, product.category)}" alt="${product.name}">
+        ${badgeHtml(product)}
+        <span class="margin-pill">${m}% margin</span>
+      </div>
+      <div>
+        <div class="pd-cat">${product.category}</div>
+        <h1 class="pd-title">${product.name}</h1>
+        <div class="pd-rating">★ ${product.rating} <span>(${product.reviews.toLocaleString()} reviews)</span></div>
+        <p class="pd-blurb">${product.blurb}</p>
+
+        <div class="pd-price-box">
+          <div class="pd-price-main">
+            <span class="sell">${fmt(product.price)}</span>
+            <span class="cost">supplier cost ${fmt(product.cost)}</span>
+          </div>
+          <div class="pd-metrics">
+            <div class="m"><div class="v">${m}%</div><div class="l">Margin</div></div>
+            <div class="m"><div class="v">${fmt(pr)}</div><div class="l">Profit / unit</div></div>
+            <div class="m"><div class="v">${fmt(pr * 100)}</div><div class="l">Profit @ 100 sold</div></div>
+          </div>
+        </div>
+
+        <a class="btn btn-primary" href="index.html#calculator">Run this in the profit calculator →</a>
+      </div>
+    </div>
+  `;
+  document.title = `${product.name} — MarginHaul`;
+</script>
+</body>
+</html>
