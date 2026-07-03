@@ -1,0 +1,14 @@
+<section class="page-block">
+  <div class="wrap wrap--narrow">
+    <span class="section-tag">{{ article.published_at | date: '%B %d, %Y' }}</span>
+    <h1>{{ article.title }}</h1>
+    {% if article.image %}
+      <img class="article-hero" src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.title | escape }}">
+    {% endif %}
+    <div class="rte">{{ article.content }}</div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Article", "settings": [] }
+{% endschema %}

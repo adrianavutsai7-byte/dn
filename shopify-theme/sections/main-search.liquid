@@ -1,0 +1,31 @@
+<section class="collection-block">
+  <div class="wrap">
+    <div class="collection-block__head">
+      <div>
+        <span class="section-tag">SEARCH</span>
+        <h1>{% if search.performed %}{{ 'general.search.results_with_count' | t: count: search.results_count }} for "{{ search.terms }}"{% else %}Search{% endif %}</h1>
+      </div>
+    </div>
+
+    <form action="{{ routes.search_url }}" method="get" role="search" class="header-search header-search--page">
+      <input type="search" name="q" placeholder="{{ 'general.search.placeholder' | t }}" value="{{ search.terms | escape }}">
+      <button type="submit" class="btn btn--primary">{{ 'general.search.submit' | t }}</button>
+    </form>
+
+    {% if search.performed %}
+      <div class="product-grid">
+        {% for item in search.results %}
+          {% if item.object_type == 'product' %}
+            {% render 'product-card', product: item %}
+          {% endif %}
+        {% else %}
+          <p class="empty-note">{{ 'general.search.no_results' | t }} "{{ search.terms }}"</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Search", "settings": [] }
+{% endschema %}

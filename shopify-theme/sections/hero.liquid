@@ -1,0 +1,32 @@
+<section class="hero">
+  <div class="hero__noise"></div>
+  <div class="wrap hero__inner">
+    {% if section.settings.eyebrow != blank %}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{% endif %}
+    <h1 class="hero__title">{{ section.settings.heading }}</h1>
+    {% if section.settings.subheading != blank %}<p class="hero__sub">{{ section.settings.subheading }}</p>{% endif %}
+    <div class="hero__actions">
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_url | default: routes.all_products_collection_url }}" class="btn btn--primary">{{ section.settings.button_label }}</a>
+      {% endif %}
+      {% if section.settings.button2_label != blank %}
+        <a href="{{ section.settings.button2_url }}" class="btn btn--outline">{{ section.settings.button2_label }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "NEW DROP" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Gear that doesn't look like everyone else's" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Curated drops, small batches, no filler. If it's here, it earned the shelf space." },
+    { "type": "text", "id": "button_label", "label": "Primary button label", "default": "Shop the drop" },
+    { "type": "url", "id": "button_url", "label": "Primary button link" },
+    { "type": "text", "id": "button2_label", "label": "Secondary button label" },
+    { "type": "url", "id": "button2_url", "label": "Secondary button link" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

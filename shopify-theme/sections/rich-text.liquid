@@ -1,0 +1,50 @@
+<section class="value-props">
+  <div class="wrap">
+    <div class="collection-block__head">
+      <div>
+        <span class="section-tag">{{ section.settings.tag_label }}</span>
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+    </div>
+    <div class="value-props__grid">
+      {% for block in section.blocks %}
+        <div class="value-card" {{ block.shopify_attributes }}>
+          <div class="value-card__icon">{{ block.settings.icon }}</div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Value props",
+  "settings": [
+    { "type": "text", "id": "tag_label", "label": "Eyebrow label", "default": "WHY US" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Not another generic storefront" }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value card",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon (emoji)", "default": "⚡" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Card title" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Card description goes here." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Value props",
+      "blocks": [
+        { "type": "value" },
+        { "type": "value" },
+        { "type": "value" }
+      ]
+    }
+  ]
+}
+{% endschema %}

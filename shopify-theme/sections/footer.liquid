@@ -1,0 +1,30 @@
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <span class="site-logo__mark">{{ shop.name | slice: 0, 1 }}</span>
+      <span>{{ shop.name }}</span>
+    </div>
+
+    <nav class="site-footer__links">
+      {%- for link in linklists.footer.links -%}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- else -%}
+        <a href="{{ routes.all_products_collection_url }}">Shop</a>
+        <a href="{{ routes.search_url }}">Search</a>
+        <a href="{{ routes.cart_url }}">Cart</a>
+      {%- endfor -%}
+    </nav>
+
+    <div class="site-footer__social">
+      {% if settings.social_instagram != blank %}<a href="{{ settings.social_instagram }}">Instagram</a>{% endif %}
+      {% if settings.social_tiktok != blank %}<a href="{{ settings.social_tiktok }}">TikTok</a>{% endif %}
+    </div>
+  </div>
+  <div class="wrap site-footer__legal">
+    &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
+  </div>
+</footer>
+
+{% schema %}
+{ "name": "Footer", "settings": [] }
+{% endschema %}

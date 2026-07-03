@@ -1,0 +1,32 @@
+<section class="collection-block">
+  <div class="wrap">
+    <div class="collection-block__head">
+      <div><span class="section-tag">JOURNAL</span><h1>{{ blog.title }}</h1></div>
+    </div>
+    <div class="product-grid">
+      {% paginate blog.articles by 12 %}
+        {% for article in blog.articles %}
+          <a href="{{ article.url }}" class="product-card">
+            <div class="product-card__media">
+              {% if article.image %}
+                <img src="{{ article.image | image_url: width: 700 }}" alt="{{ article.title | escape }}" loading="lazy">
+              {% else %}
+                <div class="product-card__placeholder">{{ article.title | slice: 0, 1 }}</div>
+              {% endif %}
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__type">{{ article.published_at | date: '%B %d, %Y' }}</span>
+              <h3 class="product-card__title">{{ article.title }}</h3>
+            </div>
+          </a>
+        {% else %}
+          <p class="empty-note">No posts yet.</p>
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Blog", "settings": [] }
+{% endschema %}

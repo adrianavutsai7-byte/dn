@@ -1,0 +1,28 @@
+<section class="collection-block">
+  <div class="wrap">
+    <div class="collection-block__head">
+      <div><span class="section-tag">BROWSE</span><h1>Collections</h1></div>
+    </div>
+    <div class="product-grid">
+      {% for collection in collections %}
+        <a href="{{ collection.url }}" class="product-card">
+          <div class="product-card__media">
+            {% if collection.featured_image %}
+              <img src="{{ collection.featured_image | image_url: width: 700 }}" alt="{{ collection.title | escape }}" loading="lazy">
+            {% else %}
+              <div class="product-card__placeholder">{{ collection.title | slice: 0, 1 }}</div>
+            {% endif %}
+          </div>
+          <div class="product-card__body">
+            <h3 class="product-card__title">{{ collection.title }}</h3>
+            <span class="product-card__type">{{ collection.products_count }} products</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Collection list", "settings": [] }
+{% endschema %}

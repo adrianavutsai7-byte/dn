@@ -1,0 +1,42 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "MarginHaul",
+    "theme_version": "1.0.0",
+    "theme_author": "MarginHaul",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      { "type": "color", "id": "color_bg", "label": "Background", "default": "#0a0a0c" },
+      { "type": "color", "id": "color_surface", "label": "Surface", "default": "#141417" },
+      { "type": "color", "id": "color_border", "label": "Border", "default": "#2a2a30" },
+      { "type": "color", "id": "color_text", "label": "Text", "default": "#f4f4f2" },
+      { "type": "color", "id": "color_text_muted", "label": "Muted text", "default": "#9b9ba3" },
+      { "type": "color", "id": "color_accent", "label": "Accent (primary)", "default": "#c8ff4d" },
+      { "type": "color", "id": "color_accent_2", "label": "Accent (secondary)", "default": "#ff3fb0" }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      { "type": "range", "id": "page_width", "label": "Max page width (px)", "min": 1000, "max": 1600, "step": 20, "default": 1320 }
+    ]
+  },
+  {
+    "name": "Marquee",
+    "settings": [
+      { "type": "checkbox", "id": "show_marquee", "label": "Show announcement marquee", "default": true },
+      { "type": "text", "id": "marquee_text", "label": "Marquee text", "default": "FREE SHIPPING OVER €50 ★ NEW DROPS WEEKLY ★ 30-DAY RETURNS ★" }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      { "type": "url", "id": "social_instagram", "label": "Instagram URL" },
+      { "type": "url", "id": "social_tiktok", "label": "TikTok URL" }
+    ]
+  }
+]

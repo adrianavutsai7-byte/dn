@@ -1,0 +1,15 @@
+<section class="newsletter">
+  <div class="wrap newsletter__inner">
+    <h2>{{ 'newsletter.heading' | t }}</h2>
+    {% form 'customer', class: 'newsletter__form' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input type="email" name="contact[email]" placeholder="{{ 'newsletter.placeholder' | t }}" required>
+      <button type="submit" class="btn btn--primary">{{ 'newsletter.submit' | t }}</button>
+      {% if form.posted_successfully? %}<p class="form-success">{{ 'newsletter.success' | t }}</p>{% endif %}
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Newsletter", "settings": [] }
+{% endschema %}

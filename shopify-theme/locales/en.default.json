@@ -1,0 +1,39 @@
+{
+  "general": {
+    "search": {
+      "placeholder": "Search products",
+      "submit": "Search",
+      "no_results": "No results for",
+      "results_with_count": "{{ count }} results"
+    },
+    "cart": {
+      "title": "Your cart",
+      "empty": "Your cart is empty",
+      "continue_shopping": "Continue shopping",
+      "checkout": "Checkout",
+      "remove": "Remove",
+      "subtotal": "Subtotal",
+      "view_cart": "View cart"
+    },
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you're looking for doesn't exist.",
+      "link": "Back to homepage"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "view_details": "View details"
+    }
+  },
+  "newsletter": {
+    "heading": "Get first access to new drops",
+    "placeholder": "Your email",
+    "submit": "Subscribe",
+    "success": "You're on the list."
+  }
+}

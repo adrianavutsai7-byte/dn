@@ -1,0 +1,24 @@
+{%- comment -%} Expects: product {%- endcomment -%}
+<a href="{{ product.url }}" class="product-card">
+  <div class="product-card__media">
+    {% if product.featured_image %}
+      <img src="{{ product.featured_image | image_url: width: 700 }}" alt="{{ product.featured_image.alt | escape }}" loading="lazy" width="700" height="{{ 700 | divided_by: product.featured_image.aspect_ratio }}">
+    {% else %}
+      <div class="product-card__placeholder">{{ product.title | slice: 0, 1 }}</div>
+    {% endif %}
+    {% if product.tags contains 'bestseller' %}<span class="tag-sticker">Best Seller</span>{% endif %}
+    {% if product.tags contains 'trending' %}<span class="tag-sticker tag-sticker--alt">Trending</span>{% endif %}
+    {% if product.tags contains 'new' %}<span class="tag-sticker tag-sticker--alt">New</span>{% endif %}
+    {% unless product.available %}<span class="tag-sticker tag-sticker--sold">Sold Out</span>{% endunless %}
+  </div>
+  <div class="product-card__body">
+    <span class="product-card__type">{{ product.type }}</span>
+    <h3 class="product-card__title">{{ product.title }}</h3>
+    <div class="product-card__price">
+      {% if product.compare_at_price > product.price %}
+        <span class="price-compare">{{ product.compare_at_price | money }}</span>
+      {% endif %}
+      <span class="price-current">{{ product.price | money }}</span>
+    </div>
+  </div>
+</a>

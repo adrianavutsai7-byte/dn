@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "hero": { "type": "hero" },
+    "featured": {
+      "type": "featured-collection",
+      "settings": { "tag_label": "TOP PICKS", "heading": "Fresh off the drop", "product_limit": 8 }
+    },
+    "values": {
+      "type": "rich-text",
+      "blocks": {
+        "v1": { "type": "value", "settings": { "icon": "⚡", "title": "Small batch drops", "text": "We curate hard and restock often — no endless generic catalog." } },
+        "v2": { "type": "value", "settings": { "icon": "🚚", "title": "Fast, tracked shipping", "text": "Every order ships with tracking so you're never guessing." } },
+        "v3": { "type": "value", "settings": { "icon": "↩", "title": "30-day returns", "text": "Not feeling it? Send it back within 30 days, no hassle." } }
+      },
+      "block_order": ["v1", "v2", "v3"]
+    }
+  },
+  "order": ["hero", "featured", "values"]
+}

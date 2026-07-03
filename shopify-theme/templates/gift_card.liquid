@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ shop.name }} gift card</title>
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+  <style>body{ background:#fff; color:#111; }</style>
+</head>
+<body class="gift-card-page">
+  <div class="wrap wrap--narrow gift-card">
+    <h1>{{ shop.name }}</h1>
+    <p class="gift-card__value">{{ gift_card.initial_value | money }}</p>
+    <p>Gift card code</p>
+    <p class="gift-card__code">{{ gift_card.code | format_code }}</p>
+    {% if gift_card.enabled and gift_card.balance != gift_card.initial_value %}
+      <p>Remaining balance: {{ gift_card.balance | money }}</p>
+    {% endif %}
+    {{ gift_card.qr_identifier | image_url: width: 200 | image_tag }}
+    <p><a href="{{ shop.url }}">{{ shop.url }}</a></p>
+  </div>
+</body>
+</html>
